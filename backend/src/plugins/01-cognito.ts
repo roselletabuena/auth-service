@@ -5,7 +5,7 @@ import { CognitoJwtVerifier } from "aws-jwt-verify";
 export default fp(
   async (fastify) => {
     const client = new CognitoIdentityProviderClient({
-      region: fastify.config.AWS_REGION,
+      region: fastify.config.REGION,
     });
 
     const verifier = CognitoJwtVerifier.create({

@@ -74,8 +74,10 @@ Resources:
         - AmazonCognitoPowerUser
       Environment:
         Variables:
-          COGNITO_USER_POOL_ID: !Ref UserPool
-          COGNITO_CLIENT_ID: !Ref UserPoolClient
+          REGION: !Ref "AWS::Region"
+          AWS_COGNITO_USER_POOL_ID: !Ref UserPool
+          AWS_COGNITO_CLIENT_ID: !Ref UserPoolClient
+          WEATHER_URL: https://api.open-meteo.com/v1/forecast
       Events:
         ApiEvent:
           Type: Api

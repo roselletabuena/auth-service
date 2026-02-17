@@ -1,22 +1,18 @@
 import { join } from "node:path";
 import AutoLoad, { AutoloadPluginOptions } from "@fastify/autoload";
 import { FastifyPluginAsync, FastifyServerOptions } from "fastify";
-import envPlugin from "./plugins/00-env";
 
 export interface AppOptions
-  extends FastifyServerOptions, Partial<AutoloadPluginOptions> {}
+  extends FastifyServerOptions, Partial<AutoloadPluginOptions> { }
 const options: AppOptions = {};
 
 const app: FastifyPluginAsync<AppOptions> = async (
   fastify,
   opts,
 ): Promise<void> => {
-  await fastify.register(envPlugin);
-
   void fastify.register(AutoLoad, {
     dir: join(__dirname, "plugins"),
     options: opts,
-    ignorePattern: /.*env\.(ts|js)$/,
   });
 
   void fastify.register(AutoLoad, {

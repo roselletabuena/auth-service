@@ -3,9 +3,10 @@ import fastifyEnv from "@fastify/env";
 import { Type, Static } from "@sinclair/typebox";
 
 const schema = Type.Object({
-  AWS_REGION: Type.String(),
+  REGION: Type.String(),
   AWS_COGNITO_USER_POOL_ID: Type.String(),
   AWS_COGNITO_CLIENT_ID: Type.String(),
+  WEATHER_URL: Type.String(),
 });
 
 type EnvSchema = Static<typeof schema>;
