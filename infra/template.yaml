@@ -66,9 +66,11 @@ Resources:
         Target: "es2020"
         Sourcemap: true
         EntryPoints:
-          - lambda.js
+          - src/lambda.ts
+        External:
+          - "@aws-sdk/*"
     Properties:
-      CodeUri: ../backend/dist
+      CodeUri: ../backend
       Handler: lambda.handler
       Policies:
         - AmazonCognitoPowerUser
